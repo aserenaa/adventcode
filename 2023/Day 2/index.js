@@ -61,7 +61,7 @@ const runTests = () => {
   console.log(fewestNumberOfCubes(games))
 }
 
-const data = readFile(`${process.cwd()}/2023/Day 2/data/puzzle.txt`)
+const data = readFile(`${process.cwd()}/2023/Day 2/data/data.txt`)
 console.log('--- Day 2: Cube Conundrum ---')
 console.log(`Part 1: ${isGameValid(parseGameData(data), 12, 13, 14)}`)
 console.log(`Part 2: ${fewestNumberOfCubes(parseGameData(data))}`)

@@ -1,6 +1,6 @@
 import { readFile } from '../../Utils/readFile.js'
 
-const numberMap = {
+const numberDictionary = {
   zero: 0,
   one: 1,
   two: 2,
@@ -13,7 +13,7 @@ const numberMap = {
   nine: 9
 }
 
-const numberList = Object.keys(numberMap)
+const numberList = Object.keys(numberDictionary)
 
 const calibrateValue = (games) => {
   return games.reduce((acc, game) => {
@@ -32,7 +32,7 @@ const convertStringToNumber = (string) => {
     return string.match(/\d+/g).pop()
   } else if (numberList.some((number) => string.includes(number))) {
     const number = numberList.find((number) => string.includes(number))
-    return numberMap[number]
+    return numberDictionary[number]
   }
 }
 
@@ -69,7 +69,7 @@ const runTests = () => {
   console.log(calibrateNumber(data))
 }
 
-const data = readFile(`${process.cwd()}/2023/Day 1/data/puzzle.txt`)
+const data = readFile(`${process.cwd()}/2023/Day 1/data/data.txt`)
 console.log('--- Day 1: Trebuchet? ---')
 console.log(`Part 1: ${calibrateValue(data)}`)
 console.log(`Part 2: ${calibrateNumber(data)}`)
