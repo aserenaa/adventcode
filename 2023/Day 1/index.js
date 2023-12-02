@@ -57,7 +57,7 @@ const calibrateNumber = (string) => {
   return parseInt(`${firstNumber}${lastNumber}`, 10)
 }
 
-const data = readFile(`${process.cwd()}/2023/Day 1/data/input.txt`)
+const data = readFile(`${process.cwd()}/2023/Day 1/data/puzzle.txt`)
 
 const part1Result = data.reduce((acc, string) => acc + calibrateValue(string), 0)
 const part2Result = data.reduce((acc, string) => acc + calibrateNumber(string), 0)
