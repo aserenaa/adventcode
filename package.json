@@ -1,0 +1,26 @@
+{
+  "name": "adventcode",
+  "version": "1.0.0",
+  "description": "Solutions for advent code",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aserenaa/adventcode.git"
+  },
+  "imports": {
+    "@Utils": "./Utils/"
+  },
+  "author": "Abraham Serena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aserenaa/adventcode/issues"
+  },
+  "homepage": "https://github.com/aserenaa/adventcode#readme",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
+}
