@@ -15,13 +15,16 @@ const numberMap = {
 
 const numberList = Object.keys(numberMap)
 
-const calibrateValue = (string) => {
-  const firstDigit = string.match(/\d/)
-  const lastDigit = string.match(/\d(?=[^\d]*$)/)
+const calibrateValue = (games) => {
+  return games.reduce((acc, game) => {
+    const firstDigit = game.match(/\d/)
+    const lastDigit = game.match(/\d(?=[^\d]*$)/)
 
-  if (firstDigit && lastDigit) {
-    return parseInt(`${firstDigit}${lastDigit}`, 10)
-  }
+    if (firstDigit && lastDigit) {
+      return acc + parseInt(`${firstDigit}${lastDigit}`, 10)
+    }
+    return acc
+  }, 0)
 }
 
 const convertStringToNumber = (string) => {
@@ -33,35 +36,41 @@ const convertStringToNumber = (string) => {
   }
 }
 
-const calibrateNumber = (string) => {
-  let leftWord = ''
-  let rightWord = ''
-  let firstNumber
-  let lastNumber
+const calibrateNumber = (games) => {
+  return games.reduce((acc, game) => {
+    let leftWord = ''
+    let rightWord = ''
+    let firstNumber
+    let lastNumber
 
-  for (let i = 0; i < string.length; i++) {
-    const firstChar = string[i]
-    const lastChar = string[string.length - 1 - i]
+    for (let i = 0; i < game.length; i++) {
+      const firstChar = game[i]
+      const lastChar = game[game.length - 1 - i]
 
-    leftWord += firstChar
-    rightWord = lastChar + rightWord
+      leftWord += firstChar
+      rightWord = lastChar + rightWord
 
-    if (firstNumber !== undefined && lastNumber !== undefined) {
-      break
+      if (firstNumber !== undefined && lastNumber !== undefined) {
+        break
+      }
+
+      firstNumber = firstNumber === undefined ? convertStringToNumber(leftWord) : firstNumber
+      lastNumber = lastNumber === undefined ? convertStringToNumber(rightWord) : lastNumber
     }
 
-    firstNumber = firstNumber === undefined ? convertStringToNumber(leftWord) : firstNumber
-    lastNumber = lastNumber === undefined ? convertStringToNumber(rightWord) : lastNumber
-  }
+    return acc + parseInt(`${firstNumber}${lastNumber}`, 10)
+  }, 0)
+}
 
-  return parseInt(`${firstNumber}${lastNumber}`, 10)
+// eslint-disable-next-line no-unused-vars
+const runTests = () => {
+  const data = readFile(`${process.cwd()}/2023/Day 1/data/test.txt`)
+  console.log(calibrateValue(data))
+  console.log(calibrateNumber(data))
 }
 
 const data = readFile(`${process.cwd()}/2023/Day 1/data/puzzle.txt`)
-
-const part1Result = data.reduce((acc, string) => acc + calibrateValue(string), 0)
-const part2Result = data.reduce((acc, string) => acc + calibrateNumber(string), 0)
-
 console.log('--- Day 1: Trebuchet? ---')
-console.log(`Part 1: ${part1Result}`)
-console.log(`Part 2: ${part2Result}`)
+console.log(`Part 1: ${calibrateValue(data)}`)
+console.log(`Part 2: ${calibrateNumber(data)}`)
+runTests()
