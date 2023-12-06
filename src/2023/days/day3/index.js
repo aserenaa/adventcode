@@ -1,4 +1,4 @@
-import { readFile } from '../../Utils/readFile.js'
+import { readFile } from '../../../utils/readFile.js'
 
 let total = 0
 let board = []
@@ -52,7 +52,7 @@ function calculateRatTotal () {
 
 // eslint-disable-next-line no-unused-vars
 const runTests = () => {
-  const data = readFile(`${process.cwd()}/2023/Day 3/data/test.txt`)
+  const data = readFile(`${process.cwd()}/data/2023/day3/test.txt`)
   // console.log(sumPartNumbers(data))
   console.log(data)
   parseBoard(data)

@@ -1,5 +1,3 @@
-import { readFile } from '../../Utils/readFile.js'
-
 const isEmpty = (str) => str === '' || str === null || str === undefined
 
 const calculateCubes = (subSet) => {
@@ -53,15 +51,4 @@ const fewestNumberOfCubes = (games) => {
   }, 0)
 }
 
-// eslint-disable-next-line no-unused-vars
-const runTests = () => {
-  const data = readFile(`${process.cwd()}/2023/Day 2/data/test.txt`)
-  const games = parseGameData(data)
-  console.log(isGameValid(games, 12, 13, 14))
-  console.log(fewestNumberOfCubes(games))
-}
-
-const data = readFile(`${process.cwd()}/2023/Day 2/data/data.txt`)
-console.log('--- Day 2: Cube Conundrum ---')
-console.log(`Part 1: ${isGameValid(parseGameData(data), 12, 13, 14)}`)
-console.log(`Part 2: ${fewestNumberOfCubes(parseGameData(data))}`)
+export { fewestNumberOfCubes, isGameValid, parseGameData }

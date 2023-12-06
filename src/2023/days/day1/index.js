@@ -64,12 +64,12 @@ const calibrateNumber = (games) => {
 
 // eslint-disable-next-line no-unused-vars
 const runTests = () => {
-  const data = readFile(`${process.cwd()}/2023/Day 1/data/test.txt`)
+  const data = readFile(`${process.cwd()}/data/2023/day1/test.txt`)
   console.log(calibrateValue(data))
   console.log(calibrateNumber(data))
 }
 
-const data = readFile(`${process.cwd()}/2023/Day 1/data/data.txt`)
+const data = readFile(`${process.cwd()}/data/2023/day1/test.txt`)
 console.log('--- Day 1: Trebuchet? ---')
 console.log(`Part 1: ${calibrateValue(data)}`)
 console.log(`Part 2: ${calibrateNumber(data)}`)
